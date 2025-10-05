@@ -1,0 +1,31 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | The following language lines are used during authentication for various
+    | messages that we need to display to the user. You are free to modify
+    | these language lines according to your application's requirements.
+    |
+    */
+
+    'failed' => 'These credentials do not match our records.',
+    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'login_title' => 'Login To Dashboard',
+    'login_btn' => 'Login',
+    'forgot_password_title' => 'Forgot Password?',
+    'forgot_password_btn' => 'Click Here',
+    'copyrights' => 'Copyrights',
+    'rights_reserved' => 'All Rights Reserved To',
+    'page_title' => 'Login',
+    'email_placeholder' => 'Email',
+    'password_placeholder' => 'Password',
+    'create_account' => 'Create Account',
+    'login_via' => 'Login with following social medias.',
+    'register_with_email' => 'Register with your email.',
+
+];
