@@ -20,6 +20,7 @@
     <!-- Title -->
     <title>{{ $title }} | {{ config('settings.business_name', 'Bookify') }}</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome/css/font-awesome.css') }}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     @yield('styles')
     @include('settings.customization')

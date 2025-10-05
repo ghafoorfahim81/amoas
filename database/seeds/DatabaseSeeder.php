@@ -1,6 +1,13 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Database\Seeders\UserManagementSeeder;
+use Database\Seeders\DepartmentSeeder;
+use Database\Seeders\PhotoSeeder;    // <-- NEW IMPORT
+use Database\Seeders\CategorySeeder; 
+use Database\Seeders\PackageSeeder;    
+use App\Booking; 
+use App\Models\Booking\BookingInfo; 
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,9 +18,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        // 1. Core Users
+        $this->call(UserManagementSeeder::class); 
+        $this->call(RolePermissionSeeder::class);
+        
+        // 2. Dependency Seeders (ORDERED by dependency: Photos -> Categories -> Departments/Packages)
+        $this->call(PhotoSeeder::class);      // <-- NEW CALL (Must run first)
+        $this->call(DepartmentSeeder::class); 
+        $this->call(CategorySeeder::class); 
+        $this->call(PackageSeeder::class);    
+        
+        // 3. Original Factory Logic (Bookings)
         // $this->call(booking_times_seeder::class);
-        factory(App\Booking::class, 100)->create()->each(function ($booking) {
-            $booking->info()->save(factory(App\Models\Booking\BookingInfo::class)->create(['booking_id' => $booking->id]));
+        
+        Booking::factory(100)->create()->each(function ($booking) {
+            $booking->info()->save(BookingInfo::factory()->create(['booking_id' => $booking->id]));
         });
     }
 }

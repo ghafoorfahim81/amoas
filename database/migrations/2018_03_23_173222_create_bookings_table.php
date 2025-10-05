@@ -24,6 +24,7 @@ class CreateBookingsTable extends Migration
             $table->string('google_calendar_event_id')->nullable();
             $table->string('email')->nullable();
             $table->string('booking_type')->nullable();
+            $table->string('booking_address', 191); 
             $table->string('status')->default('Processing');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
